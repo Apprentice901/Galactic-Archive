@@ -1,0 +1,125 @@
+// High-Precision Energy & Narrowing Casts
+
+// Don't forget to write your Journal.md repository on 
+// GitHub. It's for a critical grade for full credit.
+
+
+public enum RuneElement {
+    FIRE,
+    ARCANE,
+    VOID
+}
+
+
+public class ChaosRune {
+    private int id;
+    private String name;
+    private RuneElement element;
+
+    public ChaosRune(int id, String name, RuneElement element) {
+        this.id = id;
+        this.name = name;
+        this.element = element;
+    }
+
+    // Getters and Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public RuneElement getElement() {
+        return element;
+    }
+
+    public void setElement(RuneElement element) {
+        this.element = element;
+    }
+}
+
+
+public class Main {
+    private static final int CAPACITY = 5;
+
+    public static void main(String[] args) {
+        ChaosRune[] chaosRunes = new ChaosRune[CAPACITY];
+
+        chaosRunes[0] = new ChaosRune(1, "Flame Rune", RuneElement.FIRE);
+        chaosRunes[1] = new ChaosRune(2, "Arcane Rune", RuneElement.ARCANE);
+        chaosRunes[2] = new ChaosRune(3, "Void Rune", RuneElement.VOID);
+        chaosRunes[3] = null; // Leaving unassigned
+        chaosRunes[4] = null; // Leaving unassigned
+
+        for (ChaosRune rune : chaosRunes) {
+            if (rune != null) { // Null safety check
+                System.out.println("ID: " + rune.getId() + ", Name: " + rune.getName() + ", Element: " + rune.getElement());
+            }
+        }
+    }
+}
+
+
+// Add Primitive Field: Adding a double energyLevel field to ChaosRune.
+public class ChaosRune {
+    private int id;
+    private String name;
+    private RuneElement element;
+    private double energyLevel;
+
+    public ChaosRune(int id, String name, RuneElement element, double energyLevel) {
+        this.id = id;
+        this.name = name;
+        this.element = element;
+        this.energyLevel = energyLevel;
+    }
+
+    // Getters and Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public RuneElement getElement() {
+        return element;
+    }
+
+    public void setElement(RuneElement element) {
+        this.element = element;
+    }
+
+    public double getEnergyLevel() {
+        return energyLevel;
+    }
+
+    public void setEnergyLevel(double energyLevel) {
+        this.energyLevel = energyLevel;
+        // Casting: In Main, using casting to store a ChaosRune’s energyLevel to an int trucatedEnergy variable, then print the results.
+        // Narrowing Cast: Demonstrating a narrowing cast from double to int for energyLevel.
+        double energyLevel = 75.8;
+        int truncatedEnergy = (int) energyLevel; // Narrowing cast
+        System.out.println("Original Energy Level: " + energyLevel);
+        System.out.println("Truncated Energy Level: " + truncatedEnergy);
+    }
+}
