@@ -1,0 +1,208 @@
+// Shared Core References
+
+// Don't forget to write your Journal.md repository on 
+// GitHub. It's for a critical grade for full credit.
+
+public enum RuneElement {
+    FIRE,
+    ARCANE,
+    VOID
+}
+
+
+public class ChaosRune {
+    private int id;
+    private String name;
+    private RuneElement element;
+
+    public ChaosRune(int id, String name, RuneElement element) {
+        this.id = id;
+        this.name = name;
+        this.element = element;
+    }
+
+    // Getters and Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public RuneElement getElement() {
+        return element;
+    }
+
+    public void setElement(RuneElement element) {
+        this.element = element;
+    }
+}
+
+
+public class Main {
+    private static final int CAPACITY = 5;
+
+    public static void main(String[] args) {
+        ChaosRune[] chaosRunes = new ChaosRune[CAPACITY];
+        // Assign that exact same RuneCore instance to two different ChaosRune objects in your array.
+        RuneCore core = new RuneCore("Aether Well");
+        chaosRunes[0] = new ChaosRune(1, "Flame Rune", RuneElement.FIRE, 75.8, core); // fixed object reference
+        // Print the power source from the second rune (runes[1].core.powerSource) to demonstrate that both runes share the same object in memory.
+        System.out.println("Power Source (Rune 2): " + chaosRunes[1].getCore().getPowerSource());
+        chaosRunes[1] = new ChaosRune(2, "Arcane Rune", RuneElement.ARCANE, 80.2, core); // fixed object reference
+        chaosRunes[2] = new ChaosRune(3, "Void Rune", RuneElement.VOID, 65.5, core); // fixed object reference
+        chaosRunes[3] = null; // Leaving unassigned
+        chaosRunes[4] = null; // Leaving unassigned
+
+        for (ChaosRune rune : chaosRunes) {
+            if (rune != null) { // Null safety check
+                System.out.println("ID: " + rune.getId() + ", Name: " + rune.getName() + ", Element: " + rune.getElement());
+            }
+        }
+    }
+}
+
+
+
+public class ChaosRune {
+    private int id;
+    private String name;
+    private RuneElement element;
+    private double energyLevel;
+
+    public ChaosRune(int id, String name, RuneElement element, double energyLevel) {
+        this.id = id;
+        this.name = name;
+        this.element = element;
+        this.energyLevel = energyLevel;
+    }
+
+    // Getters and Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public RuneElement getElement() {
+        return element;
+    }
+
+    public void setElement(RuneElement element) {
+        this.element = element;
+    }
+
+    public double getEnergyLevel() {
+        return energyLevel;
+    }
+
+    public void setEnergyLevel(double energyLevel) {
+        this.energyLevel = energyLevel;
+        double energyLevel = 75.8;
+        int truncatedEnergy = (int) energyLevel; // Narrowing cast
+        System.out.println("Original Energy Level: " + energyLevel);
+        System.out.println("Truncated Energy Level: " + truncatedEnergy);
+    }
+}
+
+// Create RuneCore Class: Defining a RuneCore class with a String powerSource field.
+public class RuneCore {
+    private String powerSource;
+    public RuneCore(String powerSource) {
+        this.powerSource = powerSource;
+    }
+    // Mutate the powerSource string using the first rune’s core reference.
+    public String getPowerSource() {
+        runes[0].core.powerSource = "Void Rift";
+        return powerSource;
+    }
+
+    public void setPowerSource(String powerSource) {
+        this.powerSource = powerSource;
+    }
+}
+
+// Linking to ChaosRune: Adding a RuneCore core field to the ChaosRune class.
+public class ChaosRune {
+    private int id;
+    private String name;
+    private RuneElement element;
+    private double energyLevel;
+    private RuneCore core; // Link to RuneCore
+
+    public ChaosRune(int id, String name, RuneElement element, double energyLevel, RuneCore core) {
+        this.id = id;
+        this.name = name;
+        this.element = element;
+        this.energyLevel = energyLevel;
+        this.core = core;
+    }
+
+    // Getters and Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public RuneElement getElement() {
+        return element;
+    }
+
+    public void setElement(RuneElement element) {
+        this.element = element;
+    }
+
+    public double getEnergyLevel() {
+        return energyLevel;
+    }
+
+    public void setEnergyLevel(double energyLevel) {
+        this.energyLevel = energyLevel;
+    }
+    
+    public RuneCore getCore() {
+        return core;
+    }
+
+    public void setCore(RuneCore core) {
+        this.core = core;
+    }
+}
+
+// Instantiating one RuneCore object in main.
+public class Main {
+    public static void main(String[] args) {
+        RuneCore core = new RuneCore("Aether Well");
+    }
+}
+
