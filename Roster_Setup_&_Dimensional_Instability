@@ -1,0 +1,75 @@
+// Roster Setup & Dimensional Instability
+
+// Don't forget to write your Journal.md repository on 
+// GitHub. It's for a critical grade for full credit.
+
+
+// Create an Enum: Define an enum RuneElement with values such as FIRE, ARCANE, and VOID.
+public enum RuneElement {
+    FIRE,
+    ARCANE,
+    VOID
+}
+
+// Create the ChaosRune Class: Define fields for int id, String name, and RuneElement element.
+public class ChaosRune {
+    private int id;
+    private String name;
+    private RuneElement element;
+
+    // Constructor
+    public ChaosRune(int id, String name, RuneElement element) {
+        this.id = id;
+        this.name = name;
+        this.element = element;
+    }
+
+    // Getters and Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public RuneElement getElement() {
+        return element;
+    }
+
+    public void setElement(RuneElement element) {
+        this.element = element;
+    }
+}
+
+// Initializing the Array: In themain method, instantiate a fixed-size ChaosRune[] array driven by a final int CAPACITY = 5 constant.
+public class Main {
+    private static final int CAPACITY = 5;
+
+    public static void main(String[] args) {
+        ChaosRune[] chaosRunes = new ChaosRune[CAPACITY];
+
+        // Populate & Test: Populating only 3 slots with ChaosRune objects, leaving the remaining 2 slots unassigned (null) to represent missing runes. 
+        // In main, writing code to print the contents of the array at specific indices (including an unassigned slot).
+        chaosRunes[0] = new ChaosRune(1, "Flame Rune", RuneElement.FIRE);
+        chaosRunes[1] = new ChaosRune(2, "Arcane Rune", RuneElement.ARCANE);
+        chaosRunes[2] = new ChaosRune(3, "Void Rune", RuneElement.VOID);
+        chaosRunes[3] = null; // Leaving unassigned
+        chaosRunes[4] = null; // Leaving unassigned
+
+        // Traversing the array and printing details of each ChaosRune
+        for (ChaosRune rune : chaosRunes) {
+            if (rune != null) { // Null safety check
+                System.out.println("ID: " + rune.getId() + ", Name: " + rune.getName() + ", Element: " + rune.getElement());
+            }
+        }
+    }
+}
