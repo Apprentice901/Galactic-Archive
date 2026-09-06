@@ -12,3 +12,9 @@ Phase 2 (Journal):
 Phase 3 (Journal):
 - The two different array elements were able to reflect the same change to the RuneCore class because it's linked.
 - Primitive variables Holds values directly because the value is stored in the variable itself and fixed in size while Reference variables Holds a memory address to an object stored elsewhere in the stack as a pointer.
+
+
+Phase 4 (Journal):
+- The null guard checks for unassigned slots and prints a warning for empty slots if called on.
+- This code will demonstrate array element access and index boundaries by recalling previous methods and tweaks I did to implement the code.
+- Array Capacity cannot be changed at runtime because it is assigned a running constant throughout the array entirely.
